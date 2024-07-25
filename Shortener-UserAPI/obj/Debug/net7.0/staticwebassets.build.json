@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yycdB/lSKVMSFRgMcZMSgT0ewkbR8iBs40xrZNfnGC4=",
+  "Source": "Shortener-UserAPI",
+  "BasePath": "_content/Shortener-UserAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
