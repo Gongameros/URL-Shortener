@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortener-LinkAPI", "Shortener-LinkAPI.csproj", "{752BF6A6-8BA6-4729-AC0A-738D2B1F4AF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortener-LinkAPI.Tests", "..\Shortener-LinkAPI.Tests\Shortener-LinkAPI.Tests.csproj", "{7AEBBEDA-22F2-4581-ACFF-16AC728BFFDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{752BF6A6-8BA6-4729-AC0A-738D2B1F4AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752BF6A6-8BA6-4729-AC0A-738D2B1F4AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752BF6A6-8BA6-4729-AC0A-738D2B1F4AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752BF6A6-8BA6-4729-AC0A-738D2B1F4AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEBBEDA-22F2-4581-ACFF-16AC728BFFDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEBBEDA-22F2-4581-ACFF-16AC728BFFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEBBEDA-22F2-4581-ACFF-16AC728BFFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEBBEDA-22F2-4581-ACFF-16AC728BFFDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29C0E6CF-EF59-4F45-84EB-531D770CD449}
+	EndGlobalSection
+EndGlobal

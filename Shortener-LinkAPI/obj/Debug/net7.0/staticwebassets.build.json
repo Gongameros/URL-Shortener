@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "DJ5d7r2lSEG+7Z3VYrzhUHe6T7uRzBCpxsNl1iXplWE=",
+  "Source": "Shortener-LinkAPI",
+  "BasePath": "_content/Shortener-LinkAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
