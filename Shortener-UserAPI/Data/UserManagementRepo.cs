@@ -87,7 +87,8 @@ namespace Shortener_UserAPI.Data
                     JwtLoginToken resultToken = new JwtLoginToken
                     {
                         Token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-                        Expiration = jwtToken.ValidTo
+                        Expiration = jwtToken.ValidTo,
+                        Roles = userRoles
                     };
 
                     return resultToken;
