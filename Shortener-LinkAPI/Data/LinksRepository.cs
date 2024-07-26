@@ -16,7 +16,7 @@ namespace Shortener_LinkAPI.Data
             _context = context;
         }
 
-        public async Task<IEnumerable<Link>> GetLinksAsync()
+        public async Task<List<Link>> GetLinksAsync()
         {
             return await _context.Links.ToListAsync();
         }
@@ -29,13 +29,24 @@ namespace Shortener_LinkAPI.Data
                 OriginalUrl = originalUrl,
                 ShortenedUrl = shortenedUrl,
                 CreatedBy = createdBy,
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow,
+                ExpirationDate = DateTime.UtcNow.AddYears(1)
             };
 
             _context.Links.Add(link);
             await _context.SaveChangesAsync();
 
             return link;
+        }
+
+        public async Task DeleteLinkAsyncById(int id)
+        {
+            Link? link = await _context.Links.FirstOrDefaultAsync(l => l.Id == id);
+            if (link != null)
+            {
+                _context.Links.Remove(link);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task DeleteLinkAsync(string shortenedUrl)

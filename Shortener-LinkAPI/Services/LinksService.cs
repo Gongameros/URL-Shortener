@@ -4,7 +4,7 @@ using Shortener_LinkAPI.Models;
 
 namespace Shortener_LinkAPI.Services
 {
-    public class LinksService
+    public class LinksService : ILinksService
     {
         private readonly ILinksRepository _repository;
 
@@ -13,7 +13,7 @@ namespace Shortener_LinkAPI.Services
             _repository = repository;   
         }
 
-        public async Task<IEnumerable<Link>> GetLinksAsync()
+        public async Task<List<Link>> GetLinksAsync()
         {
             return await _repository.GetLinksAsync();
         }
@@ -21,6 +21,11 @@ namespace Shortener_LinkAPI.Services
         public async Task<Link> CreateLinkAsync(string originalUrl, string createdBy)
         {
             return await _repository.CreateLinkAsync(originalUrl, createdBy);
+        }
+
+        public async Task DeleteLinkAsyncById(int id)
+        {
+            await _repository.DeleteLinkAsyncById(id);
         }
 
         public async Task DeleteLinkAsync(string shortenedUrl)

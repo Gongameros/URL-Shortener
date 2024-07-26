@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shortener_LinkAPI.Data;
+using Shortener_LinkAPI.Services;
 
 namespace Shortener_LinkAPI
 {
@@ -20,19 +21,33 @@ namespace Shortener_LinkAPI
             });
 
             services.AddScoped<ILinksRepository, LinksRepository>();
+            services.AddScoped<ILinksService, LinksService>();
 
-
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            //services.AddControllers().AddNewtonsoftJson(options =>
-            //{
-            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            //});
+            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
             app.UseRouting();
+            app.UseCors("AllowAllOrigins");
 
             app.UseEndpoints(endpoints =>
             {

@@ -18,7 +18,7 @@ namespace Shortener_LinkAPI.Models
         public string? CreatedBy { get; set; }
 
         [Required]
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; }
 
         [Required]
         public DateTime? ExpirationDate { get; set; }

@@ -5,8 +5,9 @@ namespace Shortener_LinkAPI.Data
 {
     public interface ILinksRepository
     {
-        Task<IEnumerable<Link>> GetLinksAsync();
+        Task<List<Link>> GetLinksAsync();
         Task<Link> CreateLinkAsync(string originalUrl, string createdBy);
+        Task DeleteLinkAsyncById(int id);
         Task DeleteLinkAsync(string shortenedUrl);
     }
 }

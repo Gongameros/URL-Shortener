@@ -17,9 +17,9 @@ namespace Shortener_LinkAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Link>>> GetLinks()
+        public async Task<ActionResult<List<Link>>> GetLinks()
         {
-            IEnumerable<Link> links = await _linkService.GetLinksAsync();
+            List<Link> links = await _linkService.GetLinksAsync();
             return Ok(links);
         }
 
@@ -28,6 +28,13 @@ namespace Shortener_LinkAPI.Controllers
         {
             Link? link = await _linkService.CreateLinkAsync(request.OriginalUrl, request.CreatedBy);
             return CreatedAtAction(nameof(GetLinks), new { id = link.Id }, link);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteLinkAsyncById(int id)
+        {
+            await _linkService.DeleteLinkAsyncById(id);
+            return NoContent();
         }
 
         [HttpDelete]

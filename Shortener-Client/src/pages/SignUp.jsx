@@ -7,7 +7,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [redirect, setRedirect] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const validatePassword = (password) => {
     const hasUpperCase = /[A-Z]/.test(password);

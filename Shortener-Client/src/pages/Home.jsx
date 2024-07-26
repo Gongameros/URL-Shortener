@@ -1,4 +1,3 @@
-// src/Home.js
 import React, { useState, useEffect } from "react";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
