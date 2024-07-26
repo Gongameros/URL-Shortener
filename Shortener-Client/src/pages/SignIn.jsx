@@ -38,7 +38,8 @@ const SignIn = () => {
           type: "Bearer"
         },
         userState: {
-            name: username
+            name: username,
+            roles: data.roles
         }
       });
       console.log("CHECKING DATA");
