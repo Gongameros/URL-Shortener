@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-Shortener_ApiGateway-c2e2c898-8476-4e43-8de3-c1bc8d8aedbb</UserSecretsId>
+    <RootNamespace>Shortener_ApiGateway</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" NoWarn="NU1605" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.10" NoWarn="NU1605" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.15.2" />
+    <PackageReference Include="Microsoft.Identity.Web.DownstreamApi" Version="2.15.2" />
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="8.3.2" />
+    <PackageReference Include="Ocelot" Version="23.3.4" />
+    <PackageReference Include="Ocelot.Administration" Version="23.3.4" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="23.3.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+</Project>

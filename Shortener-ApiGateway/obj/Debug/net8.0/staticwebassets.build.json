@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VKbjl9NVYw7s1xBCh++8/9so75RAX5VNKgCN2Ns5TcA=",
+  "Source": "Shortener-ApiGateway",
+  "BasePath": "_content/Shortener-ApiGateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
