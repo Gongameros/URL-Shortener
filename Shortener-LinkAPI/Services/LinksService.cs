@@ -33,5 +33,19 @@ namespace Shortener_LinkAPI.Services
             await _repository.DeleteLinkAsync(shortenedUrl);
         }
 
+        public async Task<Link?> GetLinkByHashAsync(string hash)
+        {
+            return await _repository.GetLinkByHashAsync(hash);
+        }
+
+        public async Task<List<Link>> GetLinksByUsernameAsync(string username)
+        {
+            return await _repository.GetLinksByUsernameAsync(username);
+        }
+
+        public async Task DeleteLinksByUsername(string username)
+        {
+            await _repository.DeleteLinksByUsername(username);
+        }
     }
 }

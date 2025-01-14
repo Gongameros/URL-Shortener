@@ -1,0 +1,28 @@
+<div>
+  <mat-toolbar color="primary">
+    <div class="w-full flex">
+      <img src="../../../assets/link.png" class="h-8" />
+      <a mat-button [routerLink]="['/home']">URL-Shortener</a>
+    </div>
+
+    @if(isLoggedIn()) {
+    <div *ngIf="authService.getUserDetail() as userDetail">
+      <div class="flex gap-2 items-center">
+        <a class="p-0 m-0 font-medium" mat-button routerLink="/add-link"> Add Link </a>
+        <a class="p-0 m-0 font-medium" mat-button routerLink="/my-links"> Links </a>
+        @if(authService.isUserAdmin()) {
+        <a class="p-0 m-0 font-medium" mat-button routerLink="/admin"> Admin </a>
+        }
+        <a class="p-0 m-0 font-medium" mat-button (click)="openProfileDialog('0ms', '0ms')">{{ userDetail?.name }}</a>
+      </div>
+    </div>
+    } @else {
+    <div>
+      <div class="flex gap5 items-center">
+        <a mat-button (click)="openLoginDialog('0ms', '0ms')"> Login </a>
+        <a mat-button (click)="openRegisterDialog('0ms', '0ms')"> Register </a>
+      </div>
+    </div>
+    }
+  </mat-toolbar>
+</div>

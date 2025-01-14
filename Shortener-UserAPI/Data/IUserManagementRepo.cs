@@ -8,6 +8,7 @@ namespace Shortener_UserAPI.Data
         public Task CreateUser(RegisterUser registerUser, string role);
 
         public Task<JwtLoginToken> LoginUser(LoginUser loginUser);
-        
+
+        public Task DeleteUser(string username);
     }
 }

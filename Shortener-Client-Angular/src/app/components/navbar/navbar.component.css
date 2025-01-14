@@ -1,0 +1,13 @@
+::ng-deep .custom-modalbox {
+  /* background-color: red !important; */
+  padding: 0px;
+  border-radius: 30px;
+}
+
+::ng-deep .cdk-overlay-pane {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-dialog-panel {
+  background-color: #ffffff !important;
+}

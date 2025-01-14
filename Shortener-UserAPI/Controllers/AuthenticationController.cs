@@ -48,5 +48,25 @@ namespace Shortener_UserAPI.Controllers
                 return StatusCode(403, ex.Message);
             }
         }
+
+        [HttpDelete]
+        [Route("user/{username}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] string username)
+        {
+            try
+            {
+                // Call the repository to delete the user
+                await _userManagementRepo.DeleteUser(username);
+
+                // Return success response
+                return StatusCode(200, $"User {username} successfully deleted.");
+            }
+            catch (Exception ex)
+            {
+                // Return error if something goes wrong (user not found, etc.)
+                return StatusCode(400, $"Error deleting user {username}: {ex.Message}");
+            }
+        }
+
     }
 }

@@ -1,0 +1,7 @@
+.register-button:hover {
+  text-decoration: underline;
+}
+
+.register-button {
+  cursor: pointer;
+}

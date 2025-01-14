@@ -62,6 +62,43 @@ namespace Shortener_UserAPI.Data
 
         }
 
+        public async Task DeleteUser(string username)
+        {
+            // Find the user by username
+            IdentityUser? user = await _userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            // Remove the user from all roles before deletion (optional but recommended for cleanup)
+            var userRoles = await _userManager.GetRolesAsync(user);
+            foreach (var role in userRoles)
+            {
+                await _userManager.RemoveFromRoleAsync(user, role);
+            }
+
+            // Delete the user from the database
+            IdentityResult result = await _userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                Console.WriteLine($"User {username} has been deleted.");
+            }
+            else
+            {
+                string errorMessage = "Error deleting user: ";
+                foreach (var error in result.Errors)
+                {
+                    errorMessage += error.Description + '\n';
+                }
+
+                throw new Exception(errorMessage);
+            }
+        }
+
+
         public async Task<JwtLoginToken> LoginUser(LoginUser loginUser)
         {
             IdentityUser? user = await _userManager.FindByNameAsync(loginUser.Username);
@@ -72,7 +109,8 @@ namespace Shortener_UserAPI.Data
                 {
                     var authClaims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, user.UserName),
+                        new Claim("Name", user.UserName),
+                        new Claim("Email", user.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                     };
 
@@ -87,8 +125,7 @@ namespace Shortener_UserAPI.Data
                     JwtLoginToken resultToken = new JwtLoginToken
                     {
                         Token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-                        Expiration = jwtToken.ValidTo,
-                        Roles = userRoles
+                        Expiration = jwtToken.ValidTo
                     };
 
                     return resultToken;

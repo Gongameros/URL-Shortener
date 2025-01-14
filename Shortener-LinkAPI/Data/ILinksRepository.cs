@@ -9,5 +9,8 @@ namespace Shortener_LinkAPI.Data
         Task<Link> CreateLinkAsync(string originalUrl, string createdBy);
         Task DeleteLinkAsyncById(int id);
         Task DeleteLinkAsync(string shortenedUrl);
+        Task<Link?> GetLinkByHashAsync(string hash);
+        Task<List<Link>> GetLinksByUsernameAsync(string username);
+        Task DeleteLinksByUsername(string username);
     }
 }

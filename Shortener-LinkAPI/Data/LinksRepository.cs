@@ -80,5 +80,25 @@ namespace Shortener_LinkAPI.Data
                 }
             }
         }
+
+        public async Task<Link?> GetLinkByHashAsync(string hash)
+        {
+            return await _context.Links.FirstOrDefaultAsync(link => link.ShortenedUrl == hash);
+        }
+
+        public async Task<List<Link>> GetLinksByUsernameAsync(string username)
+        {
+            return await _context.Links.Where(link => link.CreatedBy == username).AsNoTracking().ToListAsync();
+        }
+
+        public async Task DeleteLinksByUsername(string username)
+        {
+            List<Link> links = await _context.Links.Where(link => link.CreatedBy == username).ToListAsync();
+            if (links.Any())
+            {
+                _context.Links.RemoveRange(links);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

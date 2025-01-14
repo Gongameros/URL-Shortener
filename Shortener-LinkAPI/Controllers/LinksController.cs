@@ -30,6 +30,20 @@ namespace Shortener_LinkAPI.Controllers
             return CreatedAtAction(nameof(GetLinks), new { id = link.Id }, link);
         }
 
+        [HttpGet("{username}")]
+        public async Task<ActionResult<List<Link>>> GetLinksByUsername([FromRoute] string username)
+        {
+            List<Link> links = await _linkService.GetLinksByUsernameAsync(username);
+            return Ok(links);
+        }
+
+        [HttpGet("short/{hash}")]
+        public async Task<ActionResult<Link>> GetLinkByHash([FromRoute] string hash)
+        {
+            Link? link = await _linkService.GetLinkByHashAsync(hash);
+            return Ok(link);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLinkAsyncById(int id)
         {
@@ -41,6 +55,13 @@ namespace Shortener_LinkAPI.Controllers
         public async Task<IActionResult> DeleteLinkAsync([FromBody] string shortenedUrl)
         {
             await _linkService.DeleteLinkAsync(shortenedUrl);
+            return NoContent();
+        }
+
+        [HttpDelete("all/{username}")]
+        public async Task<IActionResult> DeleteLinksByUsername([FromRoute] string username)
+        {
+            await _linkService.DeleteLinksByUsername(username);
             return NoContent();
         }
     }

@@ -28,6 +28,18 @@
       ]
     },
     {
+      "UpstreamPathTemplate": "/api/links/all/{username}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/links/all/{username}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5107
+        }
+      ]
+    },
+    {
       "UpstreamPathTemplate": "/api/links/{username}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamScheme": "http",
@@ -48,6 +60,42 @@
         {
           "Host": "localhost",
           "Port": 5107
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/authentication/Register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/authentication/Register",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5053
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/authentication/Login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/authentication/Login",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5053
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/authentication/user/{username}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/authentication/user/{username}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5053
         }
       ]
     }

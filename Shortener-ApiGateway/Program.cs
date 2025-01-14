@@ -1,20 +1,31 @@
-namespace ShortenerApiGateway
+using Ocelot.Cache.CacheManager;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
+builder.Services.AddCors(options =>
 {
-    public class Program
+    options.AddPolicy("AllowAllOrigins", corsBuilder =>
     {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+        corsBuilder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+    });
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-        }
+builder.Services.AddOcelot(builder.Configuration)
+    .AddCacheManager(c => c.WithDictionaryHandle());
 
-    }
-}
+var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+await app.UseOcelot();
+
+app.Run();

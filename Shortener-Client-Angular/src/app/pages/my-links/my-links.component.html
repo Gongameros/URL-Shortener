@@ -1,0 +1,101 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">My Links</h1>
+
+  <div class="bg-white rounded-lg p-4">
+    <table mat-table [dataSource]="linksSource" matSort class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="perm_identity"></mat-icon>
+            <div>ID</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Original URL Column -->
+      <ng-container matColumnDef="originalUrl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="link"></mat-icon>
+            <div>Original URL</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.originalUrl }}</td>
+      </ng-container>
+
+      <!-- Shortened URL Column -->
+      <ng-container matColumnDef="shortenedUrl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="short_text"></mat-icon>
+            <div>Shortened URL</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.shortenedUrl }}</td>
+      </ng-container>
+
+      <!-- Created By Column -->
+      <ng-container matColumnDef="createdBy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="create"></mat-icon>
+            <div>Created By</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+      </ng-container>
+
+      <!-- Created Date Column -->
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="date_range"></mat-icon>
+            <div>Created Date</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
+      </ng-container>
+
+      <!-- Expiration Date Column -->
+      <ng-container matColumnDef="expirationDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="flex gap-[2px] items-center">
+            <mat-icon fontIcon="update"></mat-icon>
+            <div>Expiration Date</div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.expirationDate }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="deleteLink(element.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="[
+          'id',
+          'originalUrl',
+          'shortenedUrl',
+          'createdBy',
+          'createdDate',
+          'expirationDate',
+          'actions'
+        ]"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="
+          let row;
+          columns: ['id', 'originalUrl', 'shortenedUrl', 'createdBy', 'createdDate', 'expirationDate', 'actions']
+        "
+      ></tr>
+    </table>
+  </div>
+</div>
